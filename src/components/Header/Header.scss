@@ -1,0 +1,159 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../App.scss' as *;
+
+
+
+.nav-bar {
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    @each $size in map.keys($columns) {
+        @include media-query_($size) {
+            $margin: map.get($default-margin, $size);
+            $gutter: map.get($default-gutter, $size);
+            @include layout-grid($size, $margin, $max-width);
+            @if $size == desktop {
+            
+            }
+            @if $size == tablet {
+                justify-content: flex-start;
+            }
+            @if $size == mobile {
+                padding-top: rem(10);
+            }
+        }
+    }
+
+    &__container{
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                width: map.get($default-content-width, $size);
+                $margin: map.get($default-margin, $size);
+                $gutter: map.get($default-gutter, $size);
+                @if $size == mobile {
+                    width: 100%;
+                    @include inner($size, $margin, $gutter);
+                    // height: rem(30, 20, 30);
+                } @else if $size == tablet {
+                    width: 100%;
+                    @include inner($size, $margin, $gutter);
+                    // height: rem(24, 20, 24);
+                } @else if $size == desktop {
+                    @include inner($size, $margin, $gutter);
+                    // height: rem(24, 36, 24);
+                }
+            }
+        }
+
+        &-logo {
+            @each $size in map.keys($columns) {
+                @include media-query_($size) {
+                    @if $size == desktop {
+                        grid-column-end: span 2;
+                        display: grid;
+                        height: rem(40);
+                        align-items: center;
+                    } @else if $size == tablet{
+                        grid-column-end: span 3;
+                        display: grid;
+                        height: rem(40);
+                        align-items: center;
+                    } @else {
+                        grid-column-end: span 6;
+                        display: grid;
+                        height: rem(36);
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+
+        &-search {
+            @each $size in map.keys($columns) {
+                @include media-query_($size) {
+                    @if $size == desktop {
+                        display: grid;
+                        grid-column-end: span 1;
+                        height: rem(40);
+                        justify-items: center;
+                        align-items: center;
+                    } @else if $size == tablet{
+                        display: grid;
+                        grid-column-end: span 2;
+                        height: rem(40);
+                        align-items: center;
+                    } @else {
+                        display: grid;
+                        grid-column-end: span 5;
+                        height: rem(36);
+                        justify-content: center;
+                        align-items: stretch;
+                        justify-content: stretch;
+                    }
+                }
+            }
+
+            &--input {
+                padding: 9px 4px 9px 40px;
+                background: url('../../assets/Icons/search.svg') no-repeat;
+            }
+
+            &--avatar {
+                justify-self: end;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: rem(-3);
+                background-color: $mercury;
+                @each $size in map.keys($columns) {
+                    @include media-query_($size) {
+                        @if $size == mobile {
+                            grid-column-start: 6;
+                            width: 100%;
+                            height: 100%;
+                            max-height: rem(36);
+                            max-width: rem(36);
+                        } @else {
+                            grid-column-start: 11;
+                            width: 100%;
+                            height: 100%;
+                            max-height: rem(40);
+                            max-width: rem(40);
+                        }
+                    }
+                }
+            }
+        }
+
+        &-upload {
+            
+            @each $size in map.keys($columns) {
+                @include media-query_($size) {
+                    @if $size == desktop {
+                        display: grid;
+                        grid-column-end: span 1;
+                        height: rem(40);
+                        justify-items: center;
+                        align-items: center;
+                    } @else if $size == tablet{
+                        display: grid;
+                        grid-column-end: span 2;
+                        height: rem(40);
+                        align-items: center;
+                    } @else {
+                        display: grid;
+                        grid-column-end: span 6;
+                        height: rem(40);
+                        justify-content: center;
+                        align-items: stretch;
+                        justify-content: stretch;
+                    }
+                }
+            }
+        }
+    }
+}

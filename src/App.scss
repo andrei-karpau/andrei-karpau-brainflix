@@ -1,0 +1,56 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use './styles/partials/variables' as *;
+@use './styles/partials/mixins' as *;
+
+@function rem($a:0, $b:0, $c:0){
+  @return math.div($a+$b+$c, 16) + rem;
+}
+
+#logo {
+  max-height: rem(25);
+  max-width: rem(120);
+}
+
+:root {
+  @each $size in map.keys($columns) {
+    --layout-grid-margin-#{$size}: #{map.get(
+        $default-margin,
+        $size
+      )};
+    --layout-grid-gutter-#{$size}: #{map.get(
+        $default-gutter,
+        $size
+      )};
+    --layout-grid-column-width-#{$size}: #{map.get(
+        $column-width,
+        $size
+      )};
+  }
+}
+
+@font-face {
+  font-family: 'AvenirNextRegular';
+  src: url('./assets/Font/AvenirNextLTPro-Regular.otf') format('OpenType');
+  src: url('./assets/Font/Alternative files/AvenirNextLTPro.ttf') format('TrueType');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNextDemi';
+  src: url('./assets/Font/AvenirNextLTPro-Demi.otf') format('OpenType');
+  src: url('./assets/Font/Alternative files/AvenirNextLTProDemi.ttf') format('TrueType');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AvenirNextBold';
+  src: url('./assets/Font/AvenirNextLTPro-Bold.otf') format('OpenType');
+  src: url('./assets/Font/Alternative files/AvenirNextLTProBold.ttf') format('TrueType');
+  font-weight: 700;
+  font-style: normal;
+}
+
