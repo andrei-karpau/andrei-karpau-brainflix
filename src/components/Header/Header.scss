@@ -17,10 +17,11 @@
             $gutter: map.get($default-gutter, $size);
             @include layout-grid($size, $margin, $max-width);
             @if $size == desktop {
-            
+                padding-top: rem(16);
             }
             @if $size == tablet {
                 justify-content: flex-start;
+                padding-top: rem(16);
             }
             @if $size == mobile {
                 padding-top: rem(10);
@@ -53,7 +54,7 @@
             @each $size in map.keys($columns) {
                 @include media-query_($size) {
                     @if $size == desktop {
-                        grid-column-end: span 2;
+                        grid-column-end: span 6;
                         display: grid;
                         height: rem(40);
                         align-items: center;
@@ -78,13 +79,13 @@
                 @include media-query_($size) {
                     @if $size == desktop {
                         display: grid;
-                        grid-column-end: span 1;
+                        grid-column-end: span 3;
                         height: rem(40);
                         justify-items: center;
                         align-items: center;
                     } @else if $size == tablet{
                         display: grid;
-                        grid-column-end: span 2;
+                        grid-column-end: span 5;
                         height: rem(40);
                         align-items: center;
                     } @else {
@@ -99,12 +100,33 @@
             }
 
             &--input {
-                padding: 9px 4px 9px 40px;
-                background: url('../../assets/Icons/search.svg') no-repeat;
+                width: 100%;
+                background-image: url('../../assets/Icons/search.svg');
+                background-repeat: no-repeat;
+                background-color: $alabaster;
+                border: solid 1px $mercury;
+                border-radius: 4px;
+                @each $size in map.keys($columns) {
+                    @include media-query_($size) {
+                        @if $size == mobile {
+                            height: rem(36);
+                            padding: rem(12) rem(12, 18, 6) rem(12);
+                            background-position: rem(12) center;
+                            @include text-styles-config(10, 20, 'AvenirNextRegular', 12, 12);
+                        } @else {
+                            height: rem(40);
+                            padding: rem(16) rem(16, 18, 8) rem(16);;
+                            background-position: rem(16) center;
+                            @include text-styles-config(12, 20, 'AvenirNextRegular', 16, 16);
+                        }
+                    }
+                }
+                &::placeholder{
+                    color: $brainflix-black;
+                }
             }
 
             &--avatar {
-                justify-self: end;
                 border-radius: 50%;
                 object-fit: cover;
                 object-position: rem(-3);
@@ -112,17 +134,21 @@
                 @each $size in map.keys($columns) {
                     @include media-query_($size) {
                         @if $size == mobile {
+                            justify-self: end;
                             grid-column-start: 6;
                             width: 100%;
                             height: 100%;
                             max-height: rem(36);
                             max-width: rem(36);
+                            min-width: rem(36);
                         } @else {
-                            grid-column-start: 11;
+                            justify-self: center;
+                            grid-column-start: 12;
                             width: 100%;
                             height: 100%;
                             max-height: rem(40);
                             max-width: rem(40);
+                            min-width: rem(40);
                         }
                     }
                 }
@@ -130,27 +156,41 @@
         }
 
         &-upload {
-            
+            background-image: url('../../assets/Icons/upload.svg');
+            background-size: rem(20);
+            background-position: rem(12) center;
+            background-repeat: no-repeat;
+            background-color: $brainflix-blue;
+            color: $white;
+            border-radius: 4px;
+            height: rem(40);
+            border: none;
+            text-transform: uppercase;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
             @each $size in map.keys($columns) {
                 @include media-query_($size) {
                     @if $size == desktop {
-                        display: grid;
-                        grid-column-end: span 1;
-                        height: rem(40);
-                        justify-items: center;
-                        align-items: center;
-                    } @else if $size == tablet{
-                        display: grid;
+                        display: flex;
                         grid-column-end: span 2;
+                        grid-row-start: 1;
+                        grid-column-start: 10;
                         height: rem(40);
-                        align-items: center;
+                        @include text-styles('labels-and-buttons')
+                    } @else if $size == tablet{
+                        display: flex;
+                        grid-column-end: span 3;
+                        grid-row-start: 1;
+                        grid-column-start: 9;
+                        height: rem(40);
+                        @include text-styles('labels-and-buttons')
                     } @else {
-                        display: grid;
+                        display: flex;
                         grid-column-end: span 6;
                         height: rem(40);
                         justify-content: center;
-                        align-items: stretch;
-                        justify-content: stretch;
+                        @include text-styles('labels-and-buttons', true)
                     }
                 }
             }

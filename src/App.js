@@ -1,7 +1,7 @@
-// I had to add "--openssl-legacy-provider" option to start and build script otherwise npm start failed:(
-  import React  from 'react';
+// I had to add "--openssl-legacy-provider" option to start and build scripts otherwise npm start failed:(
+import React  from 'react';
 import './App.scss';
-import Header from './components/Header/Header'
+import Header from './components/Header/Header';
 
 
 
