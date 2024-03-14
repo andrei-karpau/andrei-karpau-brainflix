@@ -1,0 +1,35 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../App.scss' as *;
+
+.container-list {
+
+    border-left: solid 1px $mercury;
+
+    &__header {
+        @include text-styles('section-header');
+        text-transform: uppercase;
+        color: $silver;
+        padding-left: rem(16);
+        padding-top: rem(32);
+    }
+
+    display: flex;
+    flex-direction: column;
+    @each $size in map.keys($columns) {
+        @include media-query_($size) {
+            @if $size == desktop {
+                grid-column-start: 9;
+                grid-column-end: span 4;
+            } @else if $size == tablet{
+                grid-column-end: span 6;  
+            } @else if $size == mobile {
+                grid-column-end: span 6;
+            }
+        }
+    }
+
+}

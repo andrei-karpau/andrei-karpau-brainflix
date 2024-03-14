@@ -1,0 +1,51 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../App.scss' as *;
+
+.video-info {
+    display: flex;
+    max-width: 100%;
+    justify-content: center;
+    @each $size in map.keys($columns) {
+        @include media-query_($size) {
+            $margin: map.get($default-margin, $size);
+            $gutter: map.get($default-gutter, $size);
+            @include layout-grid($size, $margin, $max-width);
+            @if $size == desktop {
+                
+            }
+            @if $size == tablet {
+               
+            }
+            @if $size == mobile {
+
+            }
+        }
+    }
+
+    &__container {
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                width: map.get($default-content-width, $size);
+                $margin: map.get($default-margin, $size);
+                $gutter: map.get($default-gutter, $size);
+                @if $size == mobile {
+                    width: 100%;
+                    @include inner($size, $margin, $gutter);
+                    // height: rem(30, 20, 30);
+                } @else if $size == tablet {
+                    width: 100%;
+                    @include inner($size, $margin, $gutter);
+                    // height: rem(24, 20, 24);
+                } @else if $size == desktop {
+                    @include inner($size, $margin, $gutter);
+                    // height: rem(24, 36, 24);
+                }
+            }
+        }
+    }
+
+}

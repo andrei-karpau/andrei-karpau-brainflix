@@ -1,0 +1,52 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../App.scss' as *;
+
+.list-wrapper{
+    display: flex;
+    padding: rem(16);
+
+    &__image {
+        border-radius: 4%;
+        object-fit: cover;
+        object-position: rem(0);
+        background-color: $mercury;
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                @if $size == mobile {
+                    width: 100%;
+                    height: 100%;
+                    max-height: rem(65);
+                    min-height: rem(65);
+                    max-width: rem(105);
+                    min-width: rem(105);
+                } @else {
+                    width: 100%;
+                    height: 100%;
+                    max-height: rem(65);
+                    min-height: rem(65);
+                    max-width: rem(105);
+                    min-width: rem(105);
+                }
+            }
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        padding-left: rem(16);
+        &-title {
+            @include text-styles('subheader');
+
+        }
+
+        &-channel {
+            @include text-styles('body-copy');
+        }
+    }
+
+}

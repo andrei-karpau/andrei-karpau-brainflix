@@ -18,13 +18,16 @@
             @include layout-grid($size, $margin, $max-width);
             @if $size == desktop {
                 padding-top: rem(16);
+                padding-bottom: rem(16);
             }
             @if $size == tablet {
                 justify-content: flex-start;
                 padding-top: rem(16);
+                padding-bottom: rem(16);
             }
             @if $size == mobile {
                 padding-top: rem(10);
+                padding-bottom: rem(10);
             }
         }
     }
