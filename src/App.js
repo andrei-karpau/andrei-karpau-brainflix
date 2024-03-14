@@ -1,4 +1,3 @@
-// I had to add "--openssl-legacy-provider" option to start and build scripts otherwise npm start failed:(
 // within some actions <iframe> pops-up and cover all the app:( only page reload helps:(
 import React, { useState }  from 'react';
 import './App.scss';
