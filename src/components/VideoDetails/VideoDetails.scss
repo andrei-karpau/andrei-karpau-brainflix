@@ -1,0 +1,120 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:math';
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+@use '../../App.scss' as *;
+
+.container-details {
+    display: flex;
+    flex-direction: column;
+    @each $size in map.keys($columns) {
+        @include media-query_($size) {
+            @if $size == mobile {  
+                grid-column-end: span 6;
+            } @else if $size == tablet{
+                grid-column-end: span 12;
+            } @else if $size == desktop {
+                grid-column-end: span 8;
+            }
+        }
+    }
+
+    &__header {
+        @include text-styles('page-header');
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                @if $size == mobile {
+                    @include text-styles('page-header', true);
+                } @else if $size == tablet{
+
+                } @else if $size == desktop {
+                    width: 100%;
+                    padding-right: rem(24);
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        
+    }
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 1px $mercury;
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                @if $size == mobile {
+                    box-sizing: border-box;
+                    padding-right: rem(32);
+                } @else if $size == tablet{
+                    
+                } @else if $size == desktop {
+                    width: 100%;
+                    padding-right: rem(24);
+                }
+            }
+        }
+
+        &-date {
+            display: flex;
+            padding: rem(12) rem(0) rem(12) rem(0);
+            @each $size in map.keys($columns) {
+                @include media-query_($size) {
+                    @if $size == mobile {
+                        row-gap: rem(16);
+                        flex-direction: column;
+                    } @else if $size == tablet{
+                        column-gap: rem(32);
+                    } @else if $size == desktop {
+                        column-gap: rem(32);
+                    }
+                }
+            }
+
+            span:first-child {
+                @include text-styles-config(14, 20, 'AvenirNextBold');
+                text-transform: capitalize;
+            }
+
+            span:last-child {
+                @include text-styles-config(12, 20, 'AvenirNextRegular');
+                color: $silver;
+            }
+        }
+
+        &-views {
+            @extend .container-details__wrapper-date;
+
+            div {
+                display: flex;
+                column-gap: rem(8);
+            }
+
+
+        }
+    }
+
+    &__description {
+        
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                @if $size == mobile {
+                    @include text-styles('body-copy', true);
+                    padding: rem(16) rem(0) rem(16) rem(0);
+                } @else if $size == tablet{
+                    @include text-styles('body-copy');
+                    padding: rem(24) rem(0) rem(24) rem(0);
+                } @else if $size == desktop {
+                    @include text-styles('body-copy');
+                    padding: rem(24) rem(24) rem(24) rem(0);
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+}

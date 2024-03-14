@@ -6,22 +6,12 @@
 @use '../../App.scss' as *;
 
 .container-list {
-
-    border-left: solid 1px $mercury;
-
-    &__header {
-        @include text-styles('section-header');
-        text-transform: uppercase;
-        color: $silver;
-        padding-left: rem(16);
-        padding-top: rem(32);
-    }
-
     display: flex;
     flex-direction: column;
     @each $size in map.keys($columns) {
         @include media-query_($size) {
             @if $size == desktop {
+                border-left: solid 1px $mercury;
                 grid-column-start: 9;
                 grid-column-end: span 4;
             } @else if $size == tablet{
@@ -32,4 +22,27 @@
         }
     }
 
+    &__header {
+        @include text-styles('section-header');
+        text-transform: uppercase;
+        color: $silver;
+        padding-left: rem(16);
+        // padding-top: rem(32);
+        @each $size in map.keys($columns) {
+            @include media-query_($size) {
+                @if $size == mobile {
+                    @include text-styles('body-copy', true);
+                    padding: rem(0) rem(0) rem(16) rem(0);
+                } @else if $size == tablet{
+                    @include text-styles('body-copy');
+                    padding: rem(24) rem(0) rem(24) rem(0);
+                } @else if $size == desktop {
+                    @include text-styles('body-copy');
+                    padding: rem(32) rem(0) rem(0) rem(24);
+                    width: 100%;
+                }
+            }
+        }
+        
+    }
 }

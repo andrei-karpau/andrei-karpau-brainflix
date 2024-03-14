@@ -14,7 +14,7 @@
 @mixin text-styles($mockup-text-style-name, $mobile: false) {
   @if $mobile {
       @if $mockup-text-style-name == 'page-header' {
-        @include text-styles-config(24, 32, 'AvenirNextBold');
+        @include text-styles-config(24, 32, 'AvenirNextBold', 24);
       } @else if $mockup-text-style-name == 'section-header' {
         @include text-styles-config(12, 20, 'AvenirNextDemi');
       } @else if $mockup-text-style-name == 'subheader' {
@@ -26,7 +26,7 @@
       }
   } @else {
       @if $mockup-text-style-name == 'page-header' {
-        @include text-styles-config(33, 44, 'AvenirNextBold');
+        @include text-styles-config(33, 44, 'AvenirNextBold', 32);
       } @else if $mockup-text-style-name == 'section-header' {
         @include text-styles-config(12, 20, 'AvenirNextDemi');
       } @else if $mockup-text-style-name == 'subheader' {
