@@ -4,7 +4,7 @@ import VideoList from '../VideosList/VideosList';
 import VideoDetails from '../VideoDetails/VideoDetails';
 
 function VideoInfoSection (props) {
-
+    
     return (
         <section className='video-info'>
             <div className='video-info__container'>
@@ -12,7 +12,7 @@ function VideoInfoSection (props) {
                     activeDetails = {props.activeDetails}
                 />
                 <VideoList 
-                    propsFromSection = {props}
+                    propsFromVideoInfoSection = {props}
                 />
             </div>
         </section>

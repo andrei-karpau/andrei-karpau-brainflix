@@ -1,4 +1,3 @@
-// within some actions <iframe> pops-up and cover all the app:( only page reload helps:(
 import React, { useState }  from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
@@ -10,7 +9,9 @@ import VideoSelected from './components/VideoSelected/VideoSelected';
 
 
 function App() {
+  // eslint-disable-next-line
   const [videos, setVideos] = useState(Videos);
+  // eslint-disable-next-line
   const [videoDetails, setVideoDetails] = useState(VideoDetails);
 
   const initialDetails = (id) => videoDetails.filter((details) => details.id === id);
@@ -23,13 +24,6 @@ function App() {
     setActiveDetails(videoDetails.filter((details) => details.id === videoID));
   };
 
-  //I do not understand how to call it!!! I use .filter over props with videos in VideoList and feel like it is not the best way
-  const removeSelected = (id) => {
-    const newArray = videos.filter((video) => video.id !== id);
-    setVideos(newArray);
-  };
-
-
   return (
     <div className="App">
       <Header />
@@ -38,14 +32,13 @@ function App() {
       />
       <VideoInfoSection 
         videos = {videos}
-        removeSelected = {removeSelected}
         activeVideo = {activeVideo}
         changeActiveVideo = {changeActiveVideo}
         videoDetails = {videoDetails}
         activeDetails = {activeDetails}
       />
     </div>
-  );
+  )
 }
 
 export default App;

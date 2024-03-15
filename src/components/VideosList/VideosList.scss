@@ -13,6 +13,7 @@
             @if $size == desktop {
                 border-left: solid 1px $mercury;
                 grid-column-start: 9;
+                grid-row-start: 1;
                 grid-column-end: span 4;
             } @else if $size == tablet{
                 grid-column-end: span 6;  
@@ -27,7 +28,6 @@
         text-transform: uppercase;
         color: $silver;
         padding-left: rem(16);
-        // padding-top: rem(32);
         @each $size in map.keys($columns) {
             @include media-query_($size) {
                 @if $size == mobile {
@@ -43,6 +43,5 @@
                 }
             }
         }
-        
     }
 }

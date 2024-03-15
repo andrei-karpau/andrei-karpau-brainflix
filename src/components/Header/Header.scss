@@ -118,7 +118,7 @@
                             @include text-styles-config(10, 20, 'AvenirNextRegular', 12, 12);
                         } @else {
                             height: rem(40);
-                            padding: rem(16) rem(16, 18, 8) rem(16);;
+                            padding: rem(16) rem(16, 18, 8) rem(16);
                             background-position: rem(16) center;
                             @include text-styles-config(12, 20, 'AvenirNextRegular', 16, 16);
                         }
@@ -159,6 +159,7 @@
         }
 
         &-upload {
+            cursor: pointer;
             background-image: url('../../assets/Icons/upload.svg');
             background-size: rem(20);
             background-position: rem(12) center;
@@ -180,22 +181,26 @@
                         grid-row-start: 1;
                         grid-column-start: 10;
                         height: rem(40);
-                        @include text-styles('labels-and-buttons')
+                        @include text-styles('labels-and-buttons');
                     } @else if $size == tablet{
                         display: flex;
                         grid-column-end: span 3;
                         grid-row-start: 1;
                         grid-column-start: 9;
                         height: rem(40);
-                        @include text-styles('labels-and-buttons')
+                        @include text-styles('labels-and-buttons');
                     } @else {
                         display: flex;
                         grid-column-end: span 6;
                         height: rem(40);
                         justify-content: center;
-                        @include text-styles('labels-and-buttons', true)
+                        @include text-styles('labels-and-buttons');
                     }
                 }
+            }
+
+            &:hover {
+                background-color: $brainflix-darkblue;
             }
         }
     }

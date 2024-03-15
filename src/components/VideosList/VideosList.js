@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Video from '../Video/Video';
 import './VideosList.scss';
 
 function VideosList (props) {
     
-    const {videos, activeVideo, removeSelected, changeActiveVideo, changeActiveDetails} = props.propsFromSection;
+    const {videos, activeVideo, changeActiveVideo, changeActiveDetails} = props.propsFromVideoInfoSection;
     const filtered = videos.filter(video => video.id !== activeVideo.id);
 
     return (
