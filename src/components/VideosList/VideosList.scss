@@ -32,13 +32,13 @@
             @include media-query_($size) {
                 @if $size == mobile {
                     @include text-styles('body-copy', true);
-                    padding: rem(0) rem(0) rem(16) rem(0);
+                    padding: rem(0) rem(0) rem(0) rem(0);
                 } @else if $size == tablet{
                     @include text-styles('body-copy');
-                    padding: rem(24) rem(0) rem(24) rem(0);
+                    padding: rem(0) rem(0) rem(12) rem(0);
                 } @else if $size == desktop {
                     @include text-styles('body-copy');
-                    padding: rem(32) rem(0) rem(0) rem(24);
+                    padding: rem(32) rem(0) rem(12) rem(24);
                     width: 100%;
                 }
             }

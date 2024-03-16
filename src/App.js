@@ -6,22 +6,24 @@ import VideoDetails from './data/video-details.json';
 import VideoInfoSection from './components/VideoInfoSection/VideoInfoSection';
 import VideoSelected from './components/VideoSelected/VideoSelected';
 
-
+const initialDetails = (activeVideoId) => VideoDetails.filter(details => details.id === activeVideoId);
+const initialVideoList = (activeVideoId) => Videos.filter(video => video.id !== activeVideoId);
 
 function App() {
-  // eslint-disable-next-line
-  const [videos, setVideos] = useState(Videos);
-  // eslint-disable-next-line
-  const [videoDetails, setVideoDetails] = useState(VideoDetails);
-
-  const initialDetails = (id) => videoDetails.filter((details) => details.id === id);
-
-  const [activeVideo, setActiveVideo] = useState(videos[0]);
+  
+  const [activeVideo, setActiveVideo] = useState(Videos[0]);
   const [activeDetails, setActiveDetails] = useState(initialDetails(activeVideo.id));
+  const [videoList, setVideoList] = useState(initialVideoList(activeVideo.id));
 
   const changeActiveVideo = (videoID, videoImage) => {
-    setActiveVideo({id: videoID, image: videoImage});
-    setActiveDetails(videoDetails.filter((details) => details.id === videoID));
+    setActiveVideo(
+      {
+        id: videoID,
+        image: videoImage
+      }
+    );
+    setActiveDetails(VideoDetails.filter(details => details.id === videoID));
+    setVideoList(Videos.filter(video => video.id !== videoID));
   }
 
   return (
@@ -33,10 +35,9 @@ function App() {
         activeVideo = {activeVideo}
       />
       <VideoInfoSection 
-        videos = {videos}
+        videoList = {videoList}
         activeVideo = {activeVideo}
         changeActiveVideo = {changeActiveVideo}
-        videoDetails = {videoDetails}
         activeDetails = {activeDetails}
       />
     </div>
