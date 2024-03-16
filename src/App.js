@@ -22,11 +22,13 @@ function App() {
   const changeActiveVideo = (videoID, videoImage) => {
     setActiveVideo({id: videoID, image: videoImage});
     setActiveDetails(videoDetails.filter((details) => details.id === videoID));
-  };
+  }
 
   return (
     <div className="App">
-      <Header />
+      <Header 
+
+      />
       <VideoSelected 
         activeVideo = {activeVideo}
       />
@@ -38,7 +40,7 @@ function App() {
         activeDetails = {activeDetails}
       />
     </div>
-  )
+  );
 }
 
 export default App;

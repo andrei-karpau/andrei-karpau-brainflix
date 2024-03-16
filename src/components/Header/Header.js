@@ -4,7 +4,7 @@ import logo from '../../assets/Logo/BrainFlix-logo.svg';
 import avatar from '../../assets/Images/Mohan-muruge.jpg';
 
 
-function Header (props) {
+function Header () {
     return (
         <header>
             <nav className='nav-bar'>
@@ -24,7 +24,7 @@ function Header (props) {
                 </div>
             </nav>
         </header>
-    )
+    );
 }
 
 export default Header;

@@ -16,8 +16,7 @@ function VideoInfoSection (props) {
                 />
             </div>
         </section>
-
-    )
+    );
 }
 
 export default VideoInfoSection;

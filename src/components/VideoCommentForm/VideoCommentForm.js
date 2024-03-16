@@ -19,7 +19,7 @@ function VideoCommentForm ({commentsCount}) {
             </label>
             <button className="comment__form-button">comment</button>
         </form>
-    )
+    );
 }
 
 export default VideoCommentForm;

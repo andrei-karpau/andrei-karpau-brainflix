@@ -2,9 +2,9 @@ import React from 'react';
 import Video from '../Video/Video';
 import './VideosList.scss';
 
-function VideosList (props) {
+function VideosList ({propsFromVideoInfoSection}) {
     
-    const {videos, activeVideo, changeActiveVideo, changeActiveDetails} = props.propsFromVideoInfoSection;
+    const {videos, activeVideo, changeActiveVideo, changeActiveDetails} = propsFromVideoInfoSection;
     const filtered = videos.filter(video => video.id !== activeVideo.id);
 
     return (
@@ -17,13 +17,13 @@ function VideosList (props) {
                     title = {video.title}
                     image = {video.image}
                     channel = {video.channel}
-                    activeVideo = {activeVideo}
+                    // activeVideo = {activeVideo}
                     changeActiveVideo = {changeActiveVideo}
                     changeActiveDetails = {changeActiveDetails}
                 />
             ))}
         </article>
-    )
+    );
 }
 
 export default VideosList;

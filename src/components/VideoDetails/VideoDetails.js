@@ -7,7 +7,7 @@ import VideoCommentForm from "../VideoCommentForm/VideoCommentForm";
 
 function VideoDetails ({activeDetails}) {
 
-    const details = activeDetails[0];
+    const [details] = activeDetails;
 
     const timeDifference = (current, previous) => {
         let msPerMinute = 60 * 1000;
@@ -38,7 +38,7 @@ function VideoDetails ({activeDetails}) {
     return (
         <article className='container-details'>
             <span className='container-details__header'>
-                {activeDetails ? details.title : 'something went wrong with details:('}
+                {details ? details.title : 'something went wrong with details:('}
             </span>
             <div className='container-details__wrapper'>
                 <div className='container-details__wrapper-date'>
@@ -84,7 +84,7 @@ function VideoDetails ({activeDetails}) {
             />
             ))}
         </article>
-    )
+    );
 }
 
 export default VideoDetails;
