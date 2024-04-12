@@ -7,8 +7,6 @@ import VideoCommentForm from "../VideoCommentForm/VideoCommentForm";
 
 function VideoDetails ({activeDetails}) {
 
-    const [details] = activeDetails;
-
     const timeDifference = (current, previous) => {
         let msPerMinute = 60 * 1000;
         let msPerHour = msPerMinute * 60;
@@ -33,17 +31,17 @@ function VideoDetails ({activeDetails}) {
         }
     };
 
-    const timestamp = details.timestamp;
+    const timestamp = activeDetails.timestamp;
 
     return (
         <article className='container-details'>
             <span className='container-details__header'>
-                {details ? details.title : 'something went wrong with details:('}
+                {activeDetails ? activeDetails.title : 'something went wrong with details:('}
             </span>
             <div className='container-details__wrapper'>
                 <div className='container-details__wrapper-date'>
                     <span>
-                        {'by ' + details.channel}
+                        {'by ' + activeDetails.channel}
                     </span>
                     <span>
                         {timeDifference(Date.now(), timestamp)}
@@ -53,26 +51,26 @@ function VideoDetails ({activeDetails}) {
                     <div>
                         <img src = {viewsIcon} alt = {'views'} />
                         <span>
-                            {details.views}
+                            {activeDetails.views}
                         </span>
                     </div>
                     <div>
                         <img src = {likesIcon} alt = {'likes'} />
                         <span>
-                            {details.likes}
+                            {activeDetails.likes}
                         </span>
                     </div>
                 </div>
             </div>
             <div className = 'container-details__description'>                
                 <span>
-                    {details.description}
+                    {activeDetails.description}
                 </span>
             </div>
             <VideoCommentForm
-                commentsCount = {details.comments.length}
+                commentsCount = {activeDetails.comments.length}
             />
-            {details.comments.map(comment => (
+            {activeDetails.comments.map(comment => (
             <VideoComments
                 key = {comment.id}
                 id =  {comment.id}

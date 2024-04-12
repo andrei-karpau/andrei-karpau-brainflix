@@ -4,7 +4,7 @@ import './Video.scss';
 function Video ({id, title, image, channel, changeActiveVideo}) {
 
     const clickHandler = () => {
-        changeActiveVideo(id, image);
+        changeActiveVideo(id);
     }
 
     return (
