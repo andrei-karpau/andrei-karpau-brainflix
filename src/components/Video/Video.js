@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Video.scss';
 
-function Video ({id, title, image, channel, changeActiveVideo, getVideos}) {
+function Video ({id, title, image, channel, getVideos}) {
 
     const clickHandler = () => {
         getVideos(id);
