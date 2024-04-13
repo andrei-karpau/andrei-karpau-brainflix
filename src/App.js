@@ -35,11 +35,6 @@ function App() {
     getVideos('84e96018-4022-434e-80bf-000ce4cd12b8');
   }, []);
 
-  const changeActiveVideo = (id) => {
-    getVideos(id);
-    window.scrollTo(0, 0);
-  }
-
   if (error) {
     return <div>Error: {error.message}</div>;
   }
@@ -54,10 +49,10 @@ function App() {
         <VideoSelected 
           activeVideo = {activeVideo[0]}
         />
-        <VideoInfoSection 
+        <VideoInfoSection
+          getVideos = {getVideos} 
           videoList = {videoList}
           activeVideo = {activeVideo[0]}
-          changeActiveVideo = {changeActiveVideo}
           activeDetails = {activeDetails}
         />
       </div>)

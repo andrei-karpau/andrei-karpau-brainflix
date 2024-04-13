@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import './Video.scss';
 
-function Video ({id, title, image, channel, changeActiveVideo}) {
+function Video ({id, title, image, channel, changeActiveVideo, getVideos}) {
 
     const clickHandler = () => {
-        changeActiveVideo(id);
+        getVideos(id);
+        window.scrollTo(0, 0);
     }
 
     return (

@@ -4,7 +4,7 @@ import './VideosList.scss';
 
 function VideosList ({propsFromVideoInfoSection}) {
     
-    const {videoList, changeActiveVideo, changeActiveDetails} = propsFromVideoInfoSection;
+    const {videoList, getVideos} = propsFromVideoInfoSection;
 
     return (
         <article className='container-list'>
@@ -16,8 +16,7 @@ function VideosList ({propsFromVideoInfoSection}) {
                     title = {video.title}
                     image = {video.image}
                     channel = {video.channel}
-                    changeActiveVideo = {changeActiveVideo}
-                    changeActiveDetails = {changeActiveDetails}
+                    getVideos = {getVideos}
                 />
             ))}
         </article>

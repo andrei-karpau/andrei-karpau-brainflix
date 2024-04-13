@@ -4,8 +4,6 @@ import VideoList from '../VideosList/VideosList';
 import VideoDetails from '../VideoDetails/VideoDetails';
 
 function VideoInfoSection (props) {
-
-    // console.log(props.activeDetails);
     
     return (
         <section className='video-info'>
