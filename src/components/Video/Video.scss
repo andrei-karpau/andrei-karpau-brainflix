@@ -5,6 +5,11 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../App.scss' as *;
 
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
 .list-wrapper{
     display: flex;
     column-gap: rem(16);

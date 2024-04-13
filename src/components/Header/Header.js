@@ -10,7 +10,7 @@ function Header () {
             <nav className='nav-bar'>
                 <div className='nav-bar__container'>
                     <div className='nav-bar__container-logo'>
-                        <a className='nav-bar__container-logo--link' href='#brainflix'>
+                        <a className='nav-bar__container-logo--link' href='/'>
                             <img id='logo' src={logo} alt='Here could be Brain Flix Logo'/>
                         </a>
                     </div>
