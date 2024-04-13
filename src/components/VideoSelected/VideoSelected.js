@@ -46,10 +46,10 @@ function VideoSelected () {
                     <video className='selected-video__preview' controls={true} poster={activeVideo[0].image}></video>
                 </section>
                 <VideoInfoSection
-                getVideos = {getVideos} 
-                videoList = {videoList}
-                activeVideo = {activeVideo[0]}
-                activeDetails = {activeDetails}
+                    getVideos = {getVideos} 
+                    videoList = {videoList}
+                    activeVideo = {activeVideo[0]}
+                    activeDetails = {activeDetails}
                 />
             </>)
         }
