@@ -25,10 +25,10 @@ function VideoUploadPage () {
                 <span className='video-upload__container-header'>
                 upload video 
                 </span>
-                <label className='video-upload__container-thumbnail'>
+                <div className='video-upload__container-thumbnail'>
                     <span>video thumbnail</span>
                     <img className='video-upload__container-thumbnail--image' src={uploadImage} alt = 'upload video preview'/>
-                </label>
+                </div>
                 <div  className='video-upload__container-wrapper'>
                     <label className='video-upload__container-wrapper-label'>
                         <span>title your video</span>
