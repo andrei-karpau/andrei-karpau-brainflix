@@ -1,4 +1,5 @@
 import React, { useState, useEffect }  from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './HomePage.scss';
 import VideoInfoSection from '../../components/VideoInfoSection/VideoInfoSection';
@@ -17,21 +18,23 @@ function HomePage () {
     const [activeDetails, setActiveDetails] = useState([]);
 
     const getVideos = async (id) => {
-    try {
-        const videosApi = await axios.get(`${apiUrl}videos?${apiKey}`);
-        setActiveVideo(videosApi.data.filter(video => video.id === id));
-        setVideoList(videosApi.data.filter(video => video.id !== id));
-        const activeVideoDetails = await axios.get(`${apiUrl}videos/${id}?${apiKey}`);
-        setActiveDetails(activeVideoDetails.data);
-    } catch (error) {
-        setError(error);
-    } finally {
-        setIsLoading(false);
-    }
+        try {
+            const videosApi = await axios.get(`${apiUrl}videos?${apiKey}`);
+            const activeVideoDetails = await axios.get(`${apiUrl}videos/${id}?${apiKey}`);
+            setActiveVideo(videosApi.data.filter(video => video.id === id));
+            setVideoList(videosApi.data.filter(video => video.id !== id));
+            setActiveDetails(activeVideoDetails.data);
+        } catch (error) {
+            setError(error);
+        } finally {
+            setIsLoading(false);
+        }
     }
 
+    const {videoId} = useParams();
+
     useEffect(() => {
-        getVideos(initialVideoId);
+        getVideos(videoId ? videoId : initialVideoId);
     }, []);
 
     if (error) {
