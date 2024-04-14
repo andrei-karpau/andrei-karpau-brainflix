@@ -41,6 +41,8 @@ function VideoUploadPage () {
                         </textarea>
                     </label>
                 </div>
+                <div className='video-upload__container-delimiter'>
+                </div>
                 <button type='button' onClick={cancelHandler} className='video-upload__container-cancel'>
                         cancel
                 </button>

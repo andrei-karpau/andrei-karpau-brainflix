@@ -35,6 +35,20 @@
             }
         }
 
+        &-delimiter {
+            @each $size in map.keys($columns) {
+                @include media-query_($size) {
+                    @if $size == desktop {
+                        grid-column-end: span 12;
+                        height: rem(1);
+                        border-bottom: solid 1px $mercury;
+                    } @else {
+                        display: none
+                    }
+                }
+            }
+        }
+
         &-header {
             @include text-styles('page-header');
             text-transform: capitalize;
