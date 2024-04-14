@@ -5,8 +5,6 @@ import Header from './components/Header/Header';
 import HomePage from './pages/HomePage/HomePage';
 import VideoUploadPage from './pages/VideoUploadPage/VideoUploadPage';
 
-//test git repo renaming
-
 function App() {
 
   return (

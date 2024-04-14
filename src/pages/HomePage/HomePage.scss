@@ -40,18 +40,15 @@
                     max-height: 50vh;
                     min-height: 50vh;
                     @include inner($size, $margin, $gutter);
-                    // height: rem(30, 20, 30);
                 } @else if $size == tablet {
                     width: 100%;
                     max-height: 66vh;
                     min-height: 66vh;
                     @include inner($size, $margin, $gutter);
-                    // height: rem(24, 20, 24);
                 } @else if $size == desktop {
                     max-height: 66vh;
                     min-height: 66vh;
                     @include inner($size, $margin, $gutter);
-                    // height: rem(24, 36, 24);
                 }
             }
         }
