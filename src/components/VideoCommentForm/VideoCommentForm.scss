@@ -134,7 +134,7 @@
             @include media-query_($size) {
                 @if $size == mobile {
                     width: 100%;
-                    margin-left: rem(36, 12);
+                    margin-left: rem(40, 12);
                     @include text-styles('labels-and-buttons');
                 } @else {
                     margin-top: rem(22);
