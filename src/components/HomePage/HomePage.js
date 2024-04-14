@@ -1,13 +1,13 @@
 import React, { useState, useEffect }  from 'react';
 import axios from 'axios';
-import './VideoSelected.scss';
-import VideoInfoSection from '../VideoInfoSection/VideoInfoSection';
+import './HomePage.scss';
+import VideoInfoSection from '../../components/VideoInfoSection/VideoInfoSection';
 
 const apiKey = 'api_key=22094491-ef19-4361-bf15-b34fe3402f2b';
 const apiUrl = 'https://project-2-api.herokuapp.com/';
 let initialVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
 
-function VideoSelected () {
+function HomePage () {
 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -57,4 +57,4 @@ function VideoSelected () {
     );
 }
 
-export default VideoSelected;
+export default HomePage;
