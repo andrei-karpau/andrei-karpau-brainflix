@@ -1,13 +1,27 @@
 import React from 'react';
 import './VideoUploadPage.scss';
-import uploadImage from '../../assets/Images/Upload-video-preview.jpg'
+import uploadImage from '../../assets/Images/Upload-video-preview.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function VideoUploadPage () {
+
+    const navigate = useNavigate();
+
+    const publishHandler = (event) => {
+        event.preventDefault();
+        alert('Video is uploaded');
+        navigate('/');
+    }
+
+    const cancelHandler = (event) => {
+        event.preventDefault();
+        navigate('/');
+    }
 
     return (
         <section className='video-upload'>
             
-            <div className='video-upload__container'>
+            <form className='video-upload__container'>
                 <span className='video-upload__container-header'>
                 upload video 
                 </span>
@@ -27,14 +41,14 @@ function VideoUploadPage () {
                         </textarea>
                     </label>
                 </div>
-                <button type='button' className='video-upload__container-cancel'>
+                <button type='button' onClick={cancelHandler} className='video-upload__container-cancel'>
                         cancel
                 </button>
-                <button type='button' className='video-upload__container-publish'>
+                <button type='button' onClick={publishHandler} className='video-upload__container-publish'>
                         publish
                 </button>
 
-            </div>
+            </form>
             
         </section>
     );
