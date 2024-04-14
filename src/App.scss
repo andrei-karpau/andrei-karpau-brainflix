@@ -8,6 +8,10 @@
   @return math.div($a+$b+$c, 16) + rem;
 }
 
+body {
+  margin: 0;
+}
+
 #logo {
   max-height: rem(25);
   max-width: rem(120);
