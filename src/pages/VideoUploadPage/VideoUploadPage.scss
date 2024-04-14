@@ -193,10 +193,12 @@
                         grid-column-end: span 2;
                         grid-column-start: 9;
                         @include text-styles('labels-and-buttons');
+                        margin-bottom: rem(24);
                     } @else if $size == tablet{
                         grid-column-end: span 3;
                         grid-column-start: 7;
                         @include text-styles('labels-and-buttons');
+                        margin-bottom: rem(24);
                     } @else {
                         margin-bottom: rem(16);
                         grid-column-end: span 6;
