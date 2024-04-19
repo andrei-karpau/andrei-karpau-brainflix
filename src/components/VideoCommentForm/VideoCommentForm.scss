@@ -105,6 +105,11 @@
                 }
             }
 
+            &--empty {
+                @extend .comment__form-label-input;
+                border-color: red;
+            }
+
             &::placeholder {
                 color: $brainflix-black;
             }

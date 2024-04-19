@@ -21,6 +21,16 @@ function VideoDetails ({activeDetails, setActiveDetails}) {
         }
     }
 
+    const deleteComment = async (videoId, commentId) => {
+        try {
+            await axios.delete(`${apiUrl}videos/${videoId}/comments/${commentId}?${apiKey}`);
+            const response = await axios.get(`${apiUrl}videos/${videoId}?${apiKey}`);
+            setActiveDetails(response.data);
+        } catch (error) {
+
+        }
+    }
+
     const timeDifference = (current, previous) => {
         let msPerMinute = 60 * 1000;
         let msPerHour = msPerMinute * 60;
@@ -94,6 +104,8 @@ function VideoDetails ({activeDetails, setActiveDetails}) {
                 likes = {comment.likes}
                 timestamp = {comment.timestamp}
                 timeDifference = {timeDifference}
+                deleteComment = {deleteComment}
+                videoId = {activeDetails.id}
             />
             ))}
         </article>

@@ -1,7 +1,12 @@
 import React from 'react';
 import './VideoComments.scss';
+import deleteIcon from '../../assets/Icons/icon-delete.svg';
 
-function VideoComments ({id, comment, name, timestamp, timeDifference}) {
+function VideoComments ({id, comment, name, timestamp, timeDifference, deleteComment, videoId}) {
+
+    const handleDelete = () => {
+        deleteComment(videoId, id);
+    } 
 
     return (
         <div className='comment__wrapper' id={id}>
@@ -20,7 +25,9 @@ function VideoComments ({id, comment, name, timestamp, timeDifference}) {
                         {comment}
                     </span>
                 </div>
+                
             </div>
+            <img className='comment__wrapper-delete' src = {deleteIcon} alt = {'delete'} onClick={handleDelete} />
         </div>
     );
 }
