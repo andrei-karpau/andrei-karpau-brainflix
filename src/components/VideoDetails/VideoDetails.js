@@ -6,17 +6,15 @@ import likesIcon from '../../assets/Icons/likes.svg';
 import VideoComments from "../VideoComments/VideoComments";
 import VideoCommentForm from "../VideoCommentForm/VideoCommentForm";
 
+const apiKey = 'api_key=22094491-ef19-4361-bf15-b34fe3402f2b';
+const apiUrl = 'https://project-2-api.herokuapp.com/';
+
 function VideoDetails ({activeDetails, setActiveDetails}) {
 
     const postComment = async (id, comment) => {
         try {
-            await axios.post(
-                `https://project-2-api.herokuapp.com/videos/${id}/comments?api_key=22094491-ef19-4361-bf15-b34fe3402f2b`,
-                comment
-            );
-            const response = await axios.get(
-                `https://project-2-api.herokuapp.com/videos/${id}?api_key=22094491-ef19-4361-bf15-b34fe3402f2b`
-            );
+            await axios.post(`${apiUrl}videos/${id}/comments?${apiKey}`, comment);
+            const response = await axios.get(`${apiUrl}videos/${id}?${apiKey}`);
             setActiveDetails(response.data);
         } catch (error) {
             console.log(error)
