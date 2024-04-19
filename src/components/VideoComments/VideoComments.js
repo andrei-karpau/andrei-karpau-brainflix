@@ -2,7 +2,7 @@ import React from 'react';
 import './VideoComments.scss';
 
 function VideoComments ({id, comment, name, timestamp, timeDifference}) {
-    
+
     return (
         <div className='comment__wrapper' id={id}>
             <div className='comment__wrapper-avatar'>

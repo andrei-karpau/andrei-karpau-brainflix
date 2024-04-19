@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import {Link, useParams} from 'react-router-dom';
+import React from 'react';
 import './Video.scss';
 
 function Video ({id, title, image, channel, getVideos}) {

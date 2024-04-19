@@ -10,6 +10,7 @@ function VideoInfoSection (props) {
             <div className='video-info__container'>
                 <VideoDetails
                     activeDetails = {props.activeDetails}
+                    setActiveDetails = {props.setActiveDetails}
                 />
                 <VideoList 
                     propsFromVideoInfoSection = {props}

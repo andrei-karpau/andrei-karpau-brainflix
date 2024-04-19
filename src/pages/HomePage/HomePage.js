@@ -53,6 +53,7 @@ function HomePage () {
                     videoList = {videoList}
                     activeVideo = {activeVideo[0]}
                     activeDetails = {activeDetails}
+                    setActiveDetails = {setActiveDetails}
                 />
             </>)
         }

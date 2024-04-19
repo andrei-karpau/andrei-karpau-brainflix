@@ -1,11 +1,27 @@
 import React from "react";
+import axios from 'axios';
 import './VideoDetails.scss';
 import viewsIcon from '../../assets/Icons/views.svg';
 import likesIcon from '../../assets/Icons/likes.svg';
 import VideoComments from "../VideoComments/VideoComments";
 import VideoCommentForm from "../VideoCommentForm/VideoCommentForm";
 
-function VideoDetails ({activeDetails}) {
+function VideoDetails ({activeDetails, setActiveDetails}) {
+
+    const postComment = async (id, comment) => {
+        try {
+            await axios.post(
+                `https://project-2-api.herokuapp.com/videos/${id}/comments?api_key=22094491-ef19-4361-bf15-b34fe3402f2b`,
+                comment
+            );
+            const response = await axios.get(
+                `https://project-2-api.herokuapp.com/videos/${id}?api_key=22094491-ef19-4361-bf15-b34fe3402f2b`
+            );
+            setActiveDetails(response.data);
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     const timeDifference = (current, previous) => {
         let msPerMinute = 60 * 1000;
@@ -68,9 +84,10 @@ function VideoDetails ({activeDetails}) {
                 </span>
             </div>
             <VideoCommentForm
-                commentsCount = {activeDetails.comments.length}
+                activeDetails = {activeDetails}
+                postComment = {postComment}
             />
-            {activeDetails.comments.map(comment => (
+            {activeDetails.comments.sort((a, b) => b.timestamp - a.timestamp).map(comment => (
             <VideoComments
                 key = {comment.id}
                 id =  {comment.id}
