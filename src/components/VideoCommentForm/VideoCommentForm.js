@@ -15,7 +15,7 @@ function VideoCommentForm ({activeDetails, postComment}) {
         const comment = {'name':'Andrei Karpau', 'comment':commentText};
 
         if (!commentText) {
-            alert('please write a comment');
+            // alert('please write a comment');
             setTextField('comment__form-label-input--empty');
             return
         }
