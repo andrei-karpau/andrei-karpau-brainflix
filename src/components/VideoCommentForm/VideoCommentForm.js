@@ -20,7 +20,7 @@ function VideoCommentForm ({activeDetails, postComment}) {
         }
 
         postComment(activeDetails.id, comment);
-        setTextField('comment__form-label-input');
+        setTextClass('comment__form-label-input');
         form.reset();
     }
 
