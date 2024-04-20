@@ -5,7 +5,7 @@ import avatar from '../../assets/Images/Mohan-muruge.jpg';
 function VideoCommentForm ({activeDetails, postComment}) {
 
     const formRef = useRef();
-    const [textField, setTextField] = useState('comment__form-label-input');
+    const [textClass, setTextClass] = useState('comment__form-label-input');
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -15,8 +15,7 @@ function VideoCommentForm ({activeDetails, postComment}) {
         const comment = {'name':'Andrei Karpau', 'comment':commentText};
 
         if (!commentText) {
-            // alert('please write a comment');
-            setTextField('comment__form-label-input--empty');
+            setTextClass('comment__form-label-input--empty');
             return
         }
 
@@ -31,7 +30,7 @@ function VideoCommentForm ({activeDetails, postComment}) {
             <img className='comment__form-user-image' src={avatar} alt = 'here could be an avatar'/>
             <label className="comment__form-label">
                 <span>join the conversation</span>
-                <textarea className={textField} name="comment" placeholder="Add a new comment">
+                <textarea className={textClass} name="comment" placeholder="Add a new comment">
                 </textarea>
             </label>
             <button className="comment__form-button">comment</button>
