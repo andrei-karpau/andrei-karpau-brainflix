@@ -4,8 +4,7 @@ import axios from 'axios';
 import './HomePage.scss';
 import VideoInfoSection from '../../components/VideoInfoSection/VideoInfoSection';
 
-const apiKey = 'api_key=22094491-ef19-4361-bf15-b34fe3402f2b';
-const apiUrl = 'https://project-2-api.herokuapp.com/';
+const apiUrl = 'http://localhost:8080/videos';
 let initialVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
 
 function HomePage () {
@@ -19,11 +18,10 @@ function HomePage () {
 
     const getVideos = async (id) => {
         try {
-            const videosApi = await axios.get(`${apiUrl}videos?${apiKey}`);
-            const activeVideoDetails = await axios.get(`${apiUrl}videos/${id}?${apiKey}`);
+            const videosApi = await axios.get(`${apiUrl}`);
             setActiveVideo(videosApi.data.filter(video => video.id === id));
             setVideoList(videosApi.data.filter(video => video.id !== id));
-            setActiveDetails(activeVideoDetails.data);
+            setActiveDetails(videosApi.data.filter(video => video.id === id));
         } catch (error) {
             setError(error);
         } finally {
@@ -35,7 +33,9 @@ function HomePage () {
 
     useEffect(() => {
         getVideos(videoId ? videoId : initialVideoId);
-    }, []);
+    }, [videoId]);
+
+    console.log(activeDetails);
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -52,7 +52,7 @@ function HomePage () {
                     getVideos = {getVideos} 
                     videoList = {videoList}
                     activeVideo = {activeVideo[0]}
-                    activeDetails = {activeDetails}
+                    activeDetails = {activeDetails[0]}
                     setActiveDetails = {setActiveDetails}
                 />
             </>)
