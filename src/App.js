@@ -1,10 +1,11 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import './App.scss';
 import Header from './components/Header/Header';
 import Videos from './data/videos.json';
 import VideoDetails from './data/video-details.json';
 import VideoInfoSection from './components/VideoInfoSection/VideoInfoSection';
 import VideoSelected from './components/VideoSelected/VideoSelected';
+import axios from 'axios';
 
 const initialDetails = (activeVideoId) => VideoDetails.filter(details => details.id === activeVideoId);
 const initialVideoList = (activeVideoId) => Videos.filter(video => video.id !== activeVideoId);
@@ -14,6 +15,25 @@ function App() {
   const [activeVideo, setActiveVideo] = useState(Videos[0]);
   const [activeDetails, setActiveDetails] = useState(initialDetails(activeVideo.id));
   const [videoList, setVideoList] = useState(initialVideoList(activeVideo.id));
+
+  const [videosAPI, setVideosAPI] = useState([]);
+
+  const getVideos = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/videos');
+      setVideosAPI(response.data);
+      setVideoList(response.data);
+      // console.log(videoList);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    console.log(videosAPI);
+    getVideos();
+    
+  }, []);
 
   const changeActiveVideo = (videoID, videoImage) => {
     setActiveVideo(
