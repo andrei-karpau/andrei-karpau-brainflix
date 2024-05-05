@@ -24,8 +24,8 @@ function VideoDetails ({activeDetails, setActiveDetails}) {
 
     const deleteComment = async (videoId, commentId) => {
         try {
-            await axios.delete(`${apiUrl}videos/${videoId}/comments/${commentId}?${apiKey}`);
-            const response = await axios.get(`${apiUrl}videos/${videoId}?${apiKey}`);
+            await axios.delete(`${apiUrl}/${videoId}/comments/${commentId}`);
+            const response = await axios.get(`${apiUrl}/videos/${videoId}`);
             setActiveDetails(response.data);
         } catch (error) {
 
