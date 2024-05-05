@@ -5,7 +5,7 @@ import './HomePage.scss';
 import VideoInfoSection from '../../components/VideoInfoSection/VideoInfoSection';
 
 const apiUrl = 'http://localhost:8080/videos';
-let initialVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
+const initialVideoId = '84e96018-4022-434e-80bf-000ce4cd12b8';
 
 function HomePage () {
 
