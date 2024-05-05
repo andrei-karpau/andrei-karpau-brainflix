@@ -7,14 +7,15 @@ import VideoComments from "../VideoComments/VideoComments";
 import VideoCommentForm from "../VideoCommentForm/VideoCommentForm";
 
 const apiKey = 'api_key=22094491-ef19-4361-bf15-b34fe3402f2b';
-const apiUrl = 'https://project-2-api.herokuapp.com/';
+// const apiUrl = 'https://project-2-api.herokuapp.com/';
+const apiUrl = 'http://localhost:8080';
 
 function VideoDetails ({activeDetails, setActiveDetails}) {
 
     const postComment = async (id, comment) => {
         try {
-            await axios.post(`${apiUrl}videos/${id}/comments?${apiKey}`, comment);
-            const response = await axios.get(`${apiUrl}videos/${id}?${apiKey}`);
+            await axios.post(`${apiUrl}/${id}/comments`, comment);
+            const response = await axios.get(`${apiUrl}/videos/${id}`);
             setActiveDetails(response.data);
         } catch (error) {
             console.log(error)

@@ -35,8 +35,6 @@ function HomePage () {
         getVideos(videoId ? videoId : initialVideoId);
     }, [videoId]);
 
-    console.log(activeDetails);
-
     if (error) {
         return <div>Error: {error.message}</div>;
     }
