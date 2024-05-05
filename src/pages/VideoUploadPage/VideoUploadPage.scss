@@ -161,6 +161,7 @@
                     }
         
                     &--empty {
+                        @extend .video-upload__container-wrapper-label--input;
                         border-color: $red;
                     }
                 }
@@ -168,6 +169,11 @@
                 &--textarea {
                     @extend .video-upload__container-wrapper-label--input;
                     height: rem(90);
+
+                    &--empty {
+                        @extend .video-upload__container-wrapper-label--textarea;
+                        border-color: $red;
+                    }
                 }
             }
         }

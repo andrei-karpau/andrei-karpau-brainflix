@@ -6,8 +6,6 @@ import likesIcon from '../../assets/Icons/likes.svg';
 import VideoComments from "../VideoComments/VideoComments";
 import VideoCommentForm from "../VideoCommentForm/VideoCommentForm";
 
-const apiKey = 'api_key=22094491-ef19-4361-bf15-b34fe3402f2b';
-// const apiUrl = 'https://project-2-api.herokuapp.com/';
 const apiUrl = 'http://localhost:8080';
 
 function VideoDetails ({activeDetails, setActiveDetails}) {
@@ -28,7 +26,7 @@ function VideoDetails ({activeDetails, setActiveDetails}) {
             const response = await axios.get(`${apiUrl}/videos/${videoId}`);
             setActiveDetails(response.data);
         } catch (error) {
-
+            console.log(error)
         }
     }
 

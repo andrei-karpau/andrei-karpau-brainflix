@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import axios from 'axios';
 import './VideoUploadPage.scss';
 import uploadImage from '../../assets/Images/Upload-video-preview.jpg';
@@ -10,6 +10,8 @@ function VideoUploadPage () {
 
     const navigate = useNavigate();
     const formRef = useRef();
+    const [inputClass, setInputClass] = useState('video-upload__container-wrapper-label--input');
+    const [textAreaClass, setTextAreaClass] = useState('video-upload__container-wrapper-label--textarea');
 
     const postVideo = async (video) => {
         try {
@@ -25,8 +27,22 @@ function VideoUploadPage () {
         const form = formRef.current;
         const videoTitle = form.videoTitle.value;
         const videoDescription = form.videoDescription.value;
+        const emptyTitle = 'video-upload__container-wrapper-label--input--empty';
+        const emptyDescription = 'video-upload__container-wrapper-label--textarea--empty';
+
+        if (!videoTitle && !videoDescription) {
+            setInputClass(emptyTitle);
+            setTextAreaClass(emptyDescription);
+            return
+        } else if (!videoTitle) {
+            setInputClass(emptyTitle);
+            return
+        } else if (!videoDescription) {
+            setTextAreaClass(emptyDescription);
+            return
+        }
+        
         const videoUpload = {'title':videoTitle, 'description':videoDescription, 'image': uploadImage};
-        console.log(videoUpload);
 
         postVideo(videoUpload);
         alert('Video is uploaded');
@@ -52,12 +68,12 @@ function VideoUploadPage () {
                 <div  className='video-upload__container-wrapper'>
                     <label className='video-upload__container-wrapper-label'>
                         <span>title your video</span>
-                        <input className='video-upload__container-wrapper-label--input' name='videoTitle' placeholder='Add a title to your video'>
+                        <input className={inputClass} name='videoTitle' placeholder='Add a title to your video'>
                         </input>
                     </label>
                     <label className='video-upload__container-wrapper-label'>
                         <span>add a video description</span>
-                        <textarea className='video-upload__container-wrapper-label--textarea' name='videoDescription' placeholder='Add a description to your video'>
+                        <textarea className={textAreaClass} name='videoDescription' placeholder='Add a description to your video'>
                         </textarea>
                     </label>
                 </div>
