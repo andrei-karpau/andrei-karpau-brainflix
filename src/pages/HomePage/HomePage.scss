@@ -26,6 +26,15 @@
             }
         }
     }
+
+    &__loading {
+        height: 75vh;
+        align-content: center;
+        text-align: center;
+        &--image {
+            width: 3.25rem;
+        }
+    }
     
     &__preview {
         object-fit: cover;
